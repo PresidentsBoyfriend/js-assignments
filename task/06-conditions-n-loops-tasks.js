@@ -46,7 +46,7 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    return n-1 ? n * getFactorial(n-1) : 1
 }
 
 
@@ -63,7 +63,13 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    let sum = 0;
+ 
+    while(n1 <= n2){       
+       sum+=n1;  
+       n1++;
+    }
+    return sum;
 }
 
 
@@ -82,7 +88,10 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+    if (a + b > c && b + c > a && c + a > b) {
+        return true;
+    }
+    else return false;
 }
 
 
@@ -166,7 +175,13 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    for (let i = 0; i < str.length; i++) {
+        let c = str.charAt(i);
+        if (str.indexOf(c) == i && str.indexOf(c, i + 1) == -1) {
+          return c;
+        }
+      }
+      return null;
 }
 
 
@@ -192,7 +207,22 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    let startBr, endBr;
+    if (isStartIncluded==true) { 
+        startBr = "[";
+    }
+    else  startBr = "(";
+    if (isEndIncluded==true) {
+        endBr = "]";
+    }
+    else  endBr = ")";
+    if (a==0) {
+        return (startBr+a+", "+b+endBr);
+    }
+    else if (a>b) { 
+        return (startBr+b+", "+a+endBr);
+    }
+    
 }
 
 
@@ -209,7 +239,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    return (str.split("").reverse().join(""));
 }
 
 
@@ -226,7 +256,9 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    let str = String(num);
+    let item = str.split("").reverse().join("");
+    return (Number(item));
 }
 
 
