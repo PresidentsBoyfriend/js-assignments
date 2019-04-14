@@ -30,7 +30,9 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    let item1 = num % 3 ? "" : "Fizz";
+    let item2 = num % 5 ? "" : "Buzz";
+    return (item1 && item2) ? item1 + item2 : (item1) ? item1 : (item2) ? item2 : num;
 }
 
 
@@ -302,7 +304,10 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    if (num < 10) {
+        return num;
+    }
+        return getDigitalRoot((num % 10) + getDigitalRoot(Math.floor(num / 10)));
 }
 
 
@@ -328,7 +333,22 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
+    let chars = str.split(''),
+    open = [['['],['{'],['('],['<']],
+    close = [[']'],['}'],[')'],['>']];
+    let counter = 0;
+    for ( let y = 1; y<chars.length; y++){
+    for ( let i = 0 ; i < open.length ; i++) {
+        if (chars[y-1] == open[i] && chars[y] == close [i]) {
+        chars.splice(y-1,2); 
+        y=y-2;
+        }
+    }
+    }
+    if (chars.length !== 0) {
+        return false;
+    }
+    return true;
 }
 
 
@@ -388,7 +408,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    return +parseInt(num).toString(n);
 }
 
 
@@ -428,7 +448,19 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-    throw new Error('Not implemented');
+    var aNumRows = m1.length, aNumCols = m1[0].length,
+      bNumRows = m2.length, bNumCols = m2[0].length,
+      m = new Array(aNumRows);  
+    for (var r = 0; r < aNumRows; ++r) {
+        m[r] = new Array(bNumCols); 
+        for (var c = 0; c < bNumCols; ++c) {
+            m[r][c] = 0;            
+        for (var i = 0; i < aNumCols; ++i) {
+            m[r][c] += m1[r][i] * m2[i][c];
+        }
+        }
+    }
+  return m;
 }
 
 
